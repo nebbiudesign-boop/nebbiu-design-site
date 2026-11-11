@@ -400,7 +400,8 @@ pre.recap{margin:0;background:var(--bg);border:1px solid var(--line);padding:14p
       </div>
     </div>
 
-    <form id="step-order" novalidate hidden style="display:contents">
+    <form name="commande" data-netlify="true" netlify-honeypot="bot-field" hidden><input name="bot-field"><input name="nom"><input name="email"><input name="telephone"><input name="total"><input name="paiement"><textarea name="commande"></textarea></form>
+<form id="step-order" novalidate hidden style="display:contents">
       <div class="p-body">
         <p class="note">Vos coordonnées pour préparer et confirmer votre commande.</p>
         <div class="field"><label for="o-nom">Nom et prénom *</label><input id="o-nom" autocomplete="name" required><span class="err" hidden>Indiquez votre nom.</span></div>
@@ -588,6 +589,11 @@ var PAYPAL_ME = 'nebbiudesign';
     document.getElementById('done-extra').textContent=usePP?(envoi?'Les frais d\'envoi vous seront indiqués séparément.':''):(pay==='Lien par carte'?'Votre commande est confirmée quand je vous réponds avec le lien de paiement.':'Votre commande est confirmée quand je vous réponds.');
     var text=T.join('\n');
     document.getElementById('recap').textContent=text;
+    /* Alerte e-mail : envoie aussi la commande au formulaire Netlify « commande » (site en ligne uniquement). */
+    try{var h=location.hostname;if((h.indexOf('nebbiudesign')>-1||h.indexOf('netlify.app')>-1)&&window._nbSent!==text){window._nbSent=text;
+      var fd=new URLSearchParams();fd.append('form-name','commande');fd.append('nom',v('o-nom'));fd.append('email',v('o-email'));fd.append('telephone',v('o-tel'));
+      fd.append('total',unknown?'à confirmer':eur(total));fd.append('paiement',payLabel);fd.append('commande',text);
+      fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:fd.toString()}).catch(function(){});}}catch(_){}
     document.getElementById('mail-link').href='mailto:nebbiudesign@gmail.com?subject='+encodeURIComponent('Commande boutique – '+v('o-nom'))+'&body='+encodeURIComponent(text);
     setStep('done');
   });
