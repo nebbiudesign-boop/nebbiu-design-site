@@ -325,6 +325,7 @@ body{margin:0}img{max-width:100%}[hidden]{display:none!important}
 pre.recap{margin:0;background:var(--bg);border:1px solid var(--line);padding:14px;font:400 .85rem/1.55 var(--body);white-space:pre-wrap;word-break:break-word;max-height:300px;overflow:auto;color:var(--ink)}
 .btn-wide{justify-content:center;width:100%}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--wine-deep);color:#FFFFFF;padding:12px 20px;border-radius:999px;z-index:40;font-size:.92rem;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.legal-links{display:flex;flex-wrap:wrap;gap:6px 18px}.legal-links a{text-decoration:none;opacity:.85}.legal-links a:hover{opacity:1;color:var(--gold-soft)}
 </style>
 </head>
 <body>
@@ -361,6 +362,7 @@ pre.recap{margin:0;background:var(--bg);border:1px solid var(--line);padding:14p
 <footer>
   <div class="wrap">
     <span><b>Nebbiu Design</b> · Graphisme, création &amp; personnalisation d'objets</span>
+    <span class="legal-links"><a href="mentions-legales.html">Mentions légales</a><a href="cgv.html">CGV</a><a href="confidentialite.html">Confidentialité</a></span>
     <span>© 2026 Nebbiu Design</span>
   </div>
 </footer>
@@ -414,6 +416,7 @@ pre.recap{margin:0;background:var(--bg);border:1px solid var(--line);padding:14p
         <div class="sumup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span id="pay-box">Paiement sécurisé. Vos coordonnées bancaires ne sont jamais saisies sur ce site.</span></div>
       </div>
       <div class="p-foot">
+        <p id="cgv-note" style="font-size:.85rem;color:var(--muted);margin:0">En préparant votre commande, vous acceptez les <a href="cgv.html" target="_blank" rel="noopener" style="color:var(--wine)">conditions générales de vente</a> et la <a href="confidentialite.html" target="_blank" rel="noopener" style="color:var(--wine)">politique de confidentialité</a>.</p>
         <button class="btn btn-gold btn-wide" type="submit">Préparer ma commande</button>
         <button class="mini ghost" type="button" id="back-cart" style="align-self:center">Retour au panier</button>
       </div>
